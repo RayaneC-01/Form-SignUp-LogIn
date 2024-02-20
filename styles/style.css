@@ -1,0 +1,108 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&display=swap");
+
+html,
+body {
+  font-family: "Roboto Slab", serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f0f0f0;
+}
+
+.container {
+  width: 300px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form {
+  text-align: center;
+}
+
+.form h2 {
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+button {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  border-radius: 4px;
+  box-sizing: border-box;
+  display: flex;
+}
+[class="submit btn btn-primary"] {
+  font-size: 18px;
+}
+.password-input {
+  position: relative;
+}
+
+.password-input input[type="password"] {
+  padding-right: 30px; /* Pour laisser de l'espace à l'icône d'œil */
+}
+
+.password-input img {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  width: 30px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.link {
+  font-size: 14px;
+}
+
+.login-link > a,
+.signup-link > a {
+  color: #007bff;
+  text-decoration: none;
+}
+.password-input {
+  position: relative;
+}
+
+.password-input input[type="password"] {
+  padding-right: 30px; /* Pour laisser de l'espace à l'icône d'œil */
+}
+
+.password-input .fa-eye {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #ccc;
+}
+
+.password-input .fa-eye:hover {
+  color: #333;
+}
+
+p.signup-link {
+  font-size: 16px;
+  font-weight: 500;
+}
