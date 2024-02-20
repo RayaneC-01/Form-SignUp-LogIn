@@ -1,36 +1,18 @@
-# Task Management Application
+# Simple Project
 
-Welcome to the Task Management Application! This application allows you to create, modify, and track your tasks efficiently and daily!
+This is a simple project demonstrating basic HTML, CSS, and JavaScript usage.
 
-## Accessing the Application
+## Description
 
-To access the application, you need to first sign in or register.
+This project consists of a login and registration system implemented using HTML for structure, CSS for styling, and JavaScript for form validation.
 
-### Sign In
+## Usage
 
-If you already have an account, you can sign in using your login credentials.
+To use this project, simply open the `index.html` file in your web browser.
 
-### Registration
+### Features
 
-If you are new, you need to register to create a new account. Click on the registration link and follow the instructions to create a new account.
-
-## Application Features
-
-Once signed in or registered, you will have access to the following features:
-
-- Create new tasks
-- View the list of existing tasks
-- Edit or update existing tasks
-- Mark tasks as completed or incomplete
-- Delete tasks
-- and more.
-
-## Using the Application
-
-After accessing the application, explore the different available features and start organizing your tasks efficiently!
-
-## Need Help?
-
-If you encounter any issues while using the application or if you have any questions, feel free to contact: [rchaabane20@gmail.com](mailto:rchaabane20@gmail.com).
-
-Enjoy your experience with the Task Management Application!
+- User login with email and password
+- User registration with username, email, and password
+- Password strength validation during registration
+- Eye icon to toggle password visibility on login form
