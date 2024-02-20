@@ -1,36 +1,18 @@
-# Application de Gestion des Tâches
+# Projet Simple
 
-Bienvenue dans l'Application de Gestion des Tâches ! Cette application vous permet de créer, modifier et suivre vos tâches de manière efficace et au quotidien !
+Il s'agit d'un projet simple démontrant l'utilisation basique de HTML, CSS et JavaScript.
 
-## Accès à l'Application
+## Description
 
-Pour accéder à l'application, vous devez d'abord vous connecter ou vous inscrire.
+Ce projet consiste en un système de connexion et d'inscription implémenté en utilisant HTML pour la structure, CSS pour le style et JavaScript pour la validation des formulaires.
 
-### Connexion
+## Utilisation
 
-Si vous avez déjà un compte, vous pouvez vous connecter en utilisant vos identifiants de connexion.
+Pour utiliser ce projet, ouvrez simplement le fichier `index.html` dans votre navigateur web.
 
-### Inscription
+### Fonctionnalités
 
-Si vous êtes nouveau, vous devez vous inscrire pour créer un compte. Cliquez sur le lien d'inscription et suivez les instructions pour créer un nouveau compte.
-
-## Fonctionnalités de l'Application
-
-Une fois connecté(e) ou inscrit(e), vous aurez accès aux fonctionnalités suivantes :
-
-- Créer de nouvelles tâches
-- Afficher la liste des tâches existantes
-- Modifier ou mettre à jour des tâches existantes
-- Marquer les tâches comme terminées ou incomplètes
-- Supprimer des tâches
-- etc.
-
-## Comment Utiliser l'Application
-
-Après avoir accédé à l'application, explorez les différentes fonctionnalités disponibles et commencez à organiser vos tâches de manière efficace!
-
-## Besoin d'Aide ?
-
-Si vous rencontrez des problèmes lors de l'utilisation de l'application ou si vous avez des questions, n'hésitez pas à contacter notre équipe de support à [rchaabane20@gmail.com](mailto:rchaabane20@gmail.com).
-
-Profitez de votre expérience avec l'Application de Gestion des Tâches !
+- Connexion utilisateur avec email et mot de passe
+- Inscription utilisateur avec nom d'utilisateur, email et mot de passe
+- Validation de la force du mot de passe lors de l'inscription
+- Icône d'œil pour basculer la visibilité du mot de passe sur le formulaire de connexion
