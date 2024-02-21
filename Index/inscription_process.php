@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mot_de_passe_hash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
 
     // Inclure le fichier de configuration de la base de données
-    include 'config.php';
+    require 'config.php';
 
     try {
       // Requête SQL d'insertion des données
@@ -32,8 +32,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message_erreur = "Les mots de passe ne correspondent pas.";
   }
 }
-
-// Redirection vers le formulaire d'inscription avec les messages appropriés
-header("Location: inscription.php?message_erreur=$message_erreur&message_succes=$message_succes");
-exit;
 ?>

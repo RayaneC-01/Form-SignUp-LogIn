@@ -15,10 +15,10 @@
 
 <body>
     <div class="container">
-        <form id="inscriptionForm" method="POST" action="inscription_process.php">
+        <form id="inscriptionForm" method="POST" action="accueil.php">
             <h2>Inscription</h2>
 
-            <label for="username">Nom d'utilisateur :</label>
+            <label for=" username">Nom d'utilisateur :</label>
             <input type="text" id="username" name="username" required>
 
             <label for="email">E-mail :</label>
@@ -33,6 +33,8 @@
             <button type="submit">S'inscrire</button>
         </form>
         <p class="login-link">Déjà un compte? <a href="index.php">Se Connecter</a></p>
+        <?php echo isset($message_erreur) ? '<p class="text-danger">' . $message_erreur . '</p>' : ''; ?>
+        <?php echo isset($message_succes) ? '<p class="text-success">' . $message_succes . '</p>' : ''; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

@@ -1,8 +1,3 @@
-<?php
-// Inclure le fichier de connexion
-require 'login.php';
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
