@@ -1,51 +1,3 @@
-<?php
-// Vérifier si le formulaire d'inscription a été soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-  // Récupérer les données du formulaire
-  $username = $_POST["username"];
-  $email = $_POST["email"];
-  $mot_de_passe = $_POST["mot_de_passe"];
-  $confirmation_mot_de_passe = $_POST["confirmation_mot_de_passe"];
-
-  // Vérifier si les mots de passe correspondent
-  if ($mot_de_passe === $confirmation_mot_de_passe) {
-    // Hasher le mot de passe
-    $mot_de_passe_hash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
-
-    // Informations de connexion à la base de données
-    $serveur = "localhost"; // Adresse du serveur MySQL
-    $utilisateur = "root"; // Nom d'utilisateur MySQL
-    $mot_de_passe = ""; // Mot de passe MySQL
-    $base_de_donnees = "forms_basic";
-
-    try {
-      // Connexion à la base de données avec PDO
-      $connexion = new PDO("mysql:host=$serveur;dbname=$base_de_donnees", $utilisateur, $mot_de_passe);
-
-      // Définition des attributs PDO pour obtenir les erreurs de requête SQL
-      $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-      // Requête SQL d'insertion des données
-      $requete = $connexion->prepare("INSERT INTO utilisateurs (username, email, mot_de_passe) VALUES (:username, :email, :mot_de_passe)");
-      $requete->bindParam(':username', $username);
-      $requete->bindParam(':email', $email);
-      $requete->bindParam(':mot_de_passe', $mot_de_passe_hash);
-      $requete->execute();
-
-      // Afficher un message de succès
-      $message_succes = "Inscription réussie !";
-
-      // Fermeture de la connexion à la base de données
-      $connexion = null;
-    } catch (PDOException $e) {
-      $message_erreur = "Échec de l'inscription : " . $e->getMessage();
-    }
-  } else {
-    $message_erreur = "Les mots de passe ne correspondent pas.";
-  }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -63,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="container">
-        <form id="inscriptionForm" method="POST">
+        <form id="inscriptionForm" method="POST" action="inscription_process.php">
             <h2>Inscription</h2>
 
             <label for="username">Nom d'utilisateur :</label>
@@ -81,8 +33,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit">S'inscrire</button>
         </form>
         <p class="login-link">Déjà un compte? <a href="index.php">Se Connecter</a></p>
-        <?php echo isset($message_erreur) ? '<p class="text-danger">' . $message_erreur . '</p>' : ''; ?>
-        <?php echo isset($message_succes) ? '<p class="text-success">' . $message_succes . '</p>' : ''; ?>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">

@@ -1,39 +1,8 @@
 <?php
-// Vérifier si le formulaire de connexion a été soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Informations de connexion à la base de données
-    $serveur = "localhost"; // Adresse du serveur MySQL
-    $utilisateur = "root"; // Nom d'utilisateur MySQL
-    $mot_de_passe = ""; // Mot de passe MySQL
-    $base_de_donnees = "forms";
-
-    try {
-        // Connexion à la base de données avec PDO
-        $connexion = new PDO("mysql:host=$serveur;dbname=$base_de_donnees", $utilisateur, $mot_de_passe);
-
-        // Définition des attributs PDO pour obtenir les erreurs de requête SQL
-        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // Exemple de requête SQL pour récupérer des données (vous devrez adapter cette requête à votre cas d'utilisation)
-        $requete = $connexion->prepare("SELECT * FROM utilisateurs WHERE email = :email");
-        $requete->bindParam(':email', $_POST['email']);
-        $requete->execute();
-        $utilisateur = $requete->fetch(PDO::FETCH_ASSOC);
-
-        // Vérifier si l'utilisateur existe et si le mot de passe est correct
-        if ($utilisateur && password_verify($_POST['password'], $utilisateur['mot_de_passe'])) {
-            $message_succes = "Connexion réussie.";
-        } else {
-            $message_erreur = "Identifiants incorrects.";
-        }
-
-        // Fermeture de la connexion à la base de données
-        $connexion = null;
-    } catch (PDOException $e) {
-        $message_erreur = "Échec de la connexion : " . $e->getMessage();
-    }
-}
+// Inclure le fichier de connexion
+require 'login.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -51,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="container">
-        <form class="login-form" method="POST">
+        <form class="login-form" method="POST" action="login.php">
             <h2>Connexion</h2>
             <input type="text" id="email" name="email" placeholder="username ou email" required />
             <div class="password-input">
