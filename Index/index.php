@@ -1,4 +1,3 @@
-<? require 'login.php' ?>
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -16,7 +15,7 @@
 
 <body>
     <div class="container">
-        <form class="login-form" method="POST" action="accueil.php">
+        <form class="login-form" method="POST" action="login.php">
             <h2>Connexion</h2>
             <input type="text" id="email" name="email" placeholder="username ou email" required />
             <div class="password-input">
@@ -33,7 +32,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
         </script>
-    </script>
     <script src="/Script/script.js"></script>
 </body>
 
