@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,7 +21,10 @@ session_start();
     <div class="container">
         <form class="login-form" method="POST" action="login.php">
             <h2>Connexion</h2>
-            <input type="text" id="email" name="email" placeholder="username ou email" required />
+            <label for="identifier">Nom d'utilisateur ou E-mail :</label>
+            <input type="text" id="identifier" name="identifier" placeholder="Nom d'utilisateur ou E-mail" required />
+
+            <label for="password">Mot de passe :</label>
             <div class="password-input">
                 <input type="password" id="password" name="password" placeholder="Mot de passe" required />
                 <img src="/Images/eye-close.png" alt="eye closed icon" id="eyeIcon" />
