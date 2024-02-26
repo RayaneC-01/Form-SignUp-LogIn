@@ -50,7 +50,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="container">
-        <form id="inscriptionForm" method="POST" action="accueil.php">
+        <form id="inscriptionForm" method="POST" action="traitement_inscription.php">
             <h2>Inscription</h2>
 
             <label for=" username">Nom d'utilisateur :</label>

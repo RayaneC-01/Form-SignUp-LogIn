@@ -1,40 +1,5 @@
 <?php
-// Vérifier si le formulaire de connexion a été soumis
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require 'config.php';
-    try {
-        // Connexion à la base de données avec PDO
-        $connexion = new PDO("mysql:host=$DB_SERVER;dbname=$DB_NAME", $DB_USERNAME, $DB_PASSWORD);
-
-
-        // Définition des attributs PDO pour obtenir les erreurs de requête SQL
-        $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        // Exemple de requête SQL pour récupérer des donnée
-        $requete = $connexion->prepare("SELECT * FROM utilisateurs WHERE email = :email");
-        $requete->bindParam(':email', $_POST['email']);
-        $requete->execute();
-        $utilisateur = $requete->fetch(PDO::FETCH_ASSOC);
-        //var_dump($utilisateur);
-
-        // Vérifier si l'utilisateur existe et si le mot de passe est correct
-        if ($utilisateur && password_verify($_POST['password'], $utilisateur['mot_de_passe'])) {
-            // Démarrer la session
-            session_start();
-            // Enregistrer des informations d'utilisateur dans la session si nécessaire
-            $_SESSION['utilisateur_connecte'] = true;
-            // Rediriger vers la page d'accueil connectée
-            header('Location: accueil.php');
-            exit; // Assurez-vous d'arrêter l'exécution du script après la redirection
-        } else {
-            $message_erreur = "Identifiants incorrects.";
-        }
-
-        // Fermeture de la connexion à la base de données
-        $connexion = null;
-    } catch (PDOException $e) {
-        $message_erreur = "Échec de la connexion : " . $e->getMessage();
-    }
-}
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -53,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
     <div class="container">
-        <form class="login-form" method="POST" action="accueil.php">
+        <form class="login-form" method="POST" action="login.php">
             <h2>Connexion</h2>
             <input type="text" id="email" name="email" placeholder="username ou email" required />
             <div class="password-input">
@@ -63,8 +28,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <button type="submit" class="submit btn btn-primary">Se connecter</button>
             <p class="signup-link">Pas encore de compte? <a href="inscription.php">S'inscrire</a></p>
-            <?php echo isset($message_erreur) ? '<p class="p-3 mb-2 bg-danger text-white">' . $message_erreur . '</p>' : ''; ?>
-            <?php echo isset($message_succes) ? '<p class="p-3 mb-2 bg-success text-white">' . $message_succes . '</p>' : ''; ?>
+            <?php
+            // Afficher le message d'erreur s'il est défini
+            if (isset($_SESSION['message_erreur'])) {
+                echo '<div class="alert alert-danger" role="alert">' . $_SESSION['message_erreur'] . '</div>';
+                // Une fois affiché, effacer le message d'erreur de la session
+                unset($_SESSION['message_erreur']);
+            }
+            ?>
         </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
