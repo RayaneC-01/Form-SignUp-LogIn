@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Vérifier si le formulaire d'inscription a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
@@ -53,19 +54,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form id="inscriptionForm" method="POST" action="traitement_inscription.php">
             <h2>Inscription</h2>
 
-            <label for=" username">Nom d'utilisateur :</label>
-            <input type="text" id="username" name="username" required>
+            <label for="username">Nom d'utilisateur :</label>
+            <input type="text" id="username" name="username" placeholder="nom d'utilisateur" required>
 
             <label for="email">E-mail :</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" placeholder="email" required>
 
             <label for="mot_de_passe">Mot de passe :</label>
-            <input type="password" id="mot_de_passe" name="mot_de_passe" required>
+            <input type="password" id="mot_de_passe" name="mot_de_passe" placeholder="mot de passe" required>
 
             <label for="confirmation_mot_de_passe">Confirmer le mot de passe :</label>
-            <input type="password" id="confirmation_mot_de_passe" name="confirmation_mot_de_passe" required>
+            <input type="password" id="confirmation_mot_de_passe" name="confirmation_mot_de_passe"
+                placeholder="confirmez le mot de passe" required>
 
-            <button type="submit">S'inscrire</button>
+            <button type=" submit" class="submit btn btn-primary">S'inscrire</button>
         </form>
         <p class="login-link">Déjà un compte? <a href="index.php">Se Connecter</a></p>
         <?php echo isset($message_erreur) ? '<p class="text-danger">' . $message_erreur . '</p>' : ''; ?>

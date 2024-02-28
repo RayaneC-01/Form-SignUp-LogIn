@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($utilisateur && password_verify($_POST['password'], $utilisateur['mot_de_passe'])) {
             // Démarrer la session
             session_start();
-            // Enregistrer des informations d'utilisateur dans la session si nécessaire
             $_SESSION['utilisateur_connecte'] = true;
             // Rediriger vers la page d'accueil connectée
             header('Location: accueil.php');

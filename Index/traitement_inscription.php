@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Vérifier si le formulaire d'inscription a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
@@ -6,7 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $mot_de_passe = $_POST["mot_de_passe"];
     $confirmation_mot_de_passe = $_POST["confirmation_mot_de_passe"];
-
     // Vérifier si les mots de passe correspondent
     if ($mot_de_passe === $confirmation_mot_de_passe) {
         // Hasher le mot de passe
@@ -23,14 +23,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $requete->bindParam(':mot_de_passe', $mot_de_passe_hash);
             $requete->execute();
 
-            // Rediriger vers la page d'accueil après l'inscription réussie
             header('Location: accueil.php');
             exit;
+
         } catch (PDOException $e) {
             $message_erreur = "Échec de l'inscription : " . $e->getMessage();
         }
     } else {
         $message_erreur = "Les mots de passe ne correspondent pas.";
     }
+
 }
 ?>
