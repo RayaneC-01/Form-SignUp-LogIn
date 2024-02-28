@@ -21,6 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $requete->bindParam(':email', $email);
             $requete->bindParam(':mot_de_passe', $mot_de_passe_hash);
             $requete->execute();
+            $_SESSION['utilisateur_connecte'] = true;
 
             header('Location: accueil.php');
             exit;
