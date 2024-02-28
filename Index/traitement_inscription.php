@@ -1,5 +1,8 @@
 <?php
 session_start();
+// Inclure le fichier de configuration de la base de données
+require 'config.php';
+
 // Vérifier si le formulaire d'inscription a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
@@ -11,10 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($mot_de_passe === $confirmation_mot_de_passe) {
         // Hasher le mot de passe
         $mot_de_passe_hash = password_hash($mot_de_passe, PASSWORD_DEFAULT);
-
-        // Inclure le fichier de configuration de la base de données
-        require 'config.php';
-
         try {
             // Requête SQL d'insertion des données
             $requete = $connexion->prepare("INSERT INTO utilisateurs (username, email, mot_de_passe) VALUES (:username, :email, :mot_de_passe)");
